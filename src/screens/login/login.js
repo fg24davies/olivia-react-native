@@ -13,17 +13,17 @@ const LogInScreen = () => {
   const [passWord, setPassWord] = useState("");
 
   const onSubmit = () => {
-    fetch("https://olivia-ruby-backend.herokuapp.com/users/index", {
-      method: "GET",
+    fetch(`https://olivia-ruby-backend.herokuapp.com/users/${userName}`, {
+      method: "POST",
       mode: "cors",
       credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
       referrerPolicy: "no-referrer",
-      // body: JSON.stringify({
-      //   user: { username: userName, password: passWord },
-      // }),
+      body: JSON.stringify({
+        user: { username: userName, password: passWord },
+      }),
     })
       .then((response) => response.json())
       .then((json) => {
